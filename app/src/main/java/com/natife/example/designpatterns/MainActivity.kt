@@ -17,8 +17,13 @@ import com.natife.example.designpatterns.patterns.decorator.model.WirelessConnec
 import com.natife.example.designpatterns.patterns.factory.Keyboard
 import com.natife.example.designpatterns.patterns.factory.Type
 import com.natife.example.designpatterns.patterns.singleton.ModelProvider
+import com.natife.example.designpatterns.patterns.singleton.changed.ModelProviderDoubleChecked
+import com.natife.example.designpatterns.patterns.singleton.changed.ModelProviderSynchronized
 import com.natife.example.designpatterns.patterns.singleton.model.database.Car
-import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.*
+import kotlin.concurrent.thread
+import kotlin.time.Duration
+import kotlin.time.ExperimentalTime
 
 const val singleton_pattern = "Singleton"
 const val adapter_pattern = "Adapter"
@@ -27,6 +32,8 @@ const val factory_pattern = "Factory"
 const val decorator_pattern = "Decorator"
 
 class MainActivity : AppCompatActivity() {
+
+    @ExperimentalTime
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -143,6 +150,48 @@ class MainActivity : AppCompatActivity() {
         connectionManagerWithArgs.connect()
         connectionManagerWithArgs.disconnect()
         connectionManagerWithArgs.reconnect()
+
+
+        val threads = 10
+        val calls = 400000
+
+
+        GlobalScope.launch(Dispatchers.IO) {
+            //Singleton synchronized
+            val timeSyncStart = System.nanoTime()
+            val listThreadsSync = mutableListOf<Thread>()
+            repeat(threads) {
+                listThreadsSync.add(
+                    thread(start = true) {
+                        repeat(calls) { ModelProviderSynchronized.getInstance() }
+                        println("Im finish synchronized")
+                    }
+                )
+            }
+            listThreadsSync.forEach { it.join() }
+            val timeMillisSync = Duration.nanoseconds(System.nanoTime() - timeSyncStart).inWholeMilliseconds
+
+
+            //Singleton double-checked
+            val timeDCheckStart = System.nanoTime()
+            val listThreadsDCheck = mutableListOf<Thread>()
+            repeat(threads) {
+                listThreadsDCheck.add(
+                    thread(start = true) {
+                        repeat(calls) { ModelProviderDoubleChecked.getInstance() }
+                        println("Im finish double-checked")
+                    }
+                )
+            }
+            listThreadsDCheck.forEach { it.join() }
+            val timeMillisDCheck = Duration.nanoseconds(System.nanoTime() - timeDCheckStart).inWholeMilliseconds
+
+
+            println("Synchronized time: ${timeMillisSync}mls")
+            println("Double-checked time: ${timeMillisDCheck}mls")
+            println("Synchronized/Double-checked acceleration: ${timeMillisSync.toDouble() / timeMillisDCheck}x")
+        }
+
     }
 
     private fun printCars(tag: String) {
