@@ -66,6 +66,7 @@ class MainApp: Application() {
         val adapter = CarAdapter()
         val convertedCars = adapter.toCar(carsInfo)
         runBlocking {
+            //ModelProvider.repository.addCars(carsInfo)   -> compilation error
             ModelProvider.repository.addCars(convertedCars)
             printCars(adapter_pattern)
         }
