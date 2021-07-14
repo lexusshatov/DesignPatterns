@@ -4,9 +4,15 @@ import android.graphics.Color
 import com.natife.example.designpatterns.patterns.adapter.model.CarInfo
 import com.natife.example.designpatterns.model.database.Car
 
-class CarAdapter() {
+class CarAdapter {
 
-    fun toCar(carInfo: CarInfo): Car {
+    fun toCar(carsInfo: List<CarInfo>): List<Car>
+        = carsInfo.map { convert(it) }
+
+    fun toCar(carInfo: CarInfo): Car
+        = convert(carInfo)
+
+    private fun convert(carInfo: CarInfo): Car {
         var car: Car
         carInfo.apply {
             val carModel = model

@@ -9,11 +9,11 @@ class Phone private constructor(
 ){
 
     class Builder {
-        private var model: String = ""
-        private var memory: Int = 0
-        private var height: Int = 0
-        private var width: Int = 0
-        private var produce: String = ""
+        private var model: String = "Default"
+        private var memory: Int = 16
+        private var height: Int = 1080
+        private var width: Int = 640
+        private var produce: String = "China"
 
         fun withModel(model: String): Builder {
             this.model = model
