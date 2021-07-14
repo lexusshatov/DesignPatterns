@@ -5,13 +5,13 @@ import com.natife.example.designpatterns.decorator_pattern
 import com.natife.example.designpatterns.patterns.decorator.base.BaseConnection
 import com.natife.example.designpatterns.patterns.decorator.base.Connection
 
-class ConnectionManager(private vararg val connections: BaseConnection): Connection {
+class ConnectionManager(private vararg val connections: BaseConnection) : Connection {
 
     override fun connect() {
         Log.d(decorator_pattern, "Args: ${connections.size}")
         connections.forEach {
             it.apply {
-                if (canConnect){
+                if (canConnect) {
                     connect()
                 }
             }
@@ -22,7 +22,7 @@ class ConnectionManager(private vararg val connections: BaseConnection): Connect
         Log.d(decorator_pattern, "Args: ${connections.size}")
         connections.forEach {
             it.apply {
-                if (canDisconnect){
+                if (canDisconnect) {
                     disconnect()
                 }
             }
@@ -33,7 +33,7 @@ class ConnectionManager(private vararg val connections: BaseConnection): Connect
         Log.d(decorator_pattern, "Args: ${connections.size}")
         connections.forEach {
             it.apply {
-                if (canReconnect){
+                if (canReconnect) {
                     reconnect()
                 }
             }

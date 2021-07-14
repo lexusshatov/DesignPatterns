@@ -4,7 +4,7 @@ import android.util.Log
 import com.natife.example.designpatterns.decorator_pattern
 import com.natife.example.designpatterns.patterns.decorator.base.BaseConnection
 
-class SocketConnection: BaseConnection() {
+class SocketConnection : BaseConnection() {
     override val canConnect: Boolean = true
     override val canDisconnect: Boolean = false
     override val canReconnect: Boolean = true

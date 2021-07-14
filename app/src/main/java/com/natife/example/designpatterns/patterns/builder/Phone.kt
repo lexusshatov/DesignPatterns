@@ -6,7 +6,7 @@ class Phone private constructor(
     private val height: Int,
     private val width: Int,
     private val produce: String
-){
+) {
 
     class Builder {
         private var model: String = "Default"

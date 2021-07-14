@@ -4,8 +4,7 @@ import android.util.Log
 import com.natife.example.designpatterns.decorator_pattern
 import com.natife.example.designpatterns.patterns.decorator.base.BaseConnection
 
-
-class InternetConnection: BaseConnection() {
+class InternetConnection : BaseConnection() {
     override val canConnect: Boolean = true
     override val canDisconnect: Boolean = true
     override val canReconnect: Boolean = true

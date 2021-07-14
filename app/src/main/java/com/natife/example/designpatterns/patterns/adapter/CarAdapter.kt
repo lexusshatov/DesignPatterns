@@ -6,11 +6,9 @@ import com.natife.example.designpatterns.patterns.singleton.model.database.Car
 
 class CarAdapter {
 
-    fun toCar(carsInfo: List<CarInfo>): List<Car>
-        = carsInfo.map { convert(it) }
+    fun toCar(carsInfo: List<CarInfo>): List<Car> = carsInfo.map { convert(it) }
 
-    fun toCar(carInfo: CarInfo): Car
-        = convert(carInfo)
+    fun toCar(carInfo: CarInfo): Car = convert(carInfo)
 
     private fun convert(carInfo: CarInfo): Car {
         var car: Car

@@ -20,7 +20,6 @@ import com.natife.example.designpatterns.patterns.singleton.ModelProvider
 import com.natife.example.designpatterns.patterns.singleton.model.database.Car
 import kotlinx.coroutines.runBlocking
 
-
 const val singleton_pattern = "Singleton"
 const val adapter_pattern = "Adapter"
 const val builder_pattern = "Builder"
@@ -61,9 +60,18 @@ class MainActivity : AppCompatActivity() {
             с базой данных
          */
         val carsInfo = listOf(
-            CarInfo(model = "Mercedes-benz", info = Info(colorInfo = ColorInfo(100f, 50f, 111f), weight = 2105.3f)),
-            CarInfo(model = "ZAZ", info = Info(colorInfo = ColorInfo(90f, 50f, 10f), weight = 3000f)),
-            CarInfo(model = "Porsche", info = Info(colorInfo = ColorInfo(120f, 54f, 27f), weight = 3345.4f))
+            CarInfo(
+                model = "Mercedes-benz",
+                info = Info(colorInfo = ColorInfo(100f, 50f, 111f), weight = 2105.3f)
+            ),
+            CarInfo(
+                model = "ZAZ",
+                info = Info(colorInfo = ColorInfo(90f, 50f, 10f), weight = 3000f)
+            ),
+            CarInfo(
+                model = "Porsche",
+                info = Info(colorInfo = ColorInfo(120f, 54f, 27f), weight = 3345.4f)
+            )
         )
 
         val adapter = CarAdapter()
