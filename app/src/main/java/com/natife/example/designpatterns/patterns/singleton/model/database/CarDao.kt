@@ -1,4 +1,4 @@
-package com.natife.example.designpatterns.model.database
+package com.natife.example.designpatterns.patterns.singleton.model.database
 
 import androidx.room.Dao
 import androidx.room.Insert

@@ -2,7 +2,7 @@ package com.natife.example.designpatterns.patterns.adapter
 
 import android.graphics.Color
 import com.natife.example.designpatterns.patterns.adapter.model.CarInfo
-import com.natife.example.designpatterns.model.database.Car
+import com.natife.example.designpatterns.patterns.singleton.model.database.Car
 
 class CarAdapter {
 

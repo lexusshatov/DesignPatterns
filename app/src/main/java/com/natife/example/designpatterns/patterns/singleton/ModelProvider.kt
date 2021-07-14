@@ -2,8 +2,8 @@ package com.natife.example.designpatterns.patterns.singleton
 
 import android.content.Context
 import androidx.room.Room
-import com.natife.example.designpatterns.model.database.CarDatabase
-import com.natife.example.designpatterns.model.repository.CarRepository
+import com.natife.example.designpatterns.patterns.singleton.model.database.CarDatabase
+import com.natife.example.designpatterns.patterns.singleton.model.repository.CarRepository
 
 object ModelProvider {
     private lateinit var contextProvider: () -> Context

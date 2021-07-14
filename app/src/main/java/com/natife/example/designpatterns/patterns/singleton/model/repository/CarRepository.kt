@@ -1,7 +1,7 @@
-package com.natife.example.designpatterns.model.repository
+package com.natife.example.designpatterns.patterns.singleton.model.repository
 
-import com.natife.example.designpatterns.model.database.Car
-import com.natife.example.designpatterns.model.database.CarDatabase
+import com.natife.example.designpatterns.patterns.singleton.model.database.Car
+import com.natife.example.designpatterns.patterns.singleton.model.database.CarDatabase
 
 class CarRepository(private val database: CarDatabase) {
 
